@@ -1,0 +1,11 @@
+<div class="div-input">
+    <input matInput [formControl]="inputKey" placeholder="Introduzca lo que quiere buscar" class="input-key">
+    <button class="button-search" (click)="callServicePage()"><mat-icon>search</mat-icon></button>
+</div>
+<div class="main-img">
+    <img *ngFor="let image of response" class="preview" [routerLink]="['/detail', image.id]" routerLinkActive="active"
+        [src]="image?.urls?.small" title="{{ image?.description }}" alt="{{ image?.alt_description }}">
+</div>
+<mat-paginator *ngIf="length > 1" [length]="length" pageSize=pageSize (page)="getPaginatorData($event)"
+    [pageSizeOptions]="[10]" showFirstLastButtons="false">
+</mat-paginator>

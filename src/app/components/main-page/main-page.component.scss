@@ -1,0 +1,29 @@
+.div-input {
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+.input-key {
+    width: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.button-search {
+    border: 0px;
+    background: transparent;
+    cursor: pointer;
+}
+.main-img {
+    text-align: center;
+}
+.preview {
+    text-align: center;
+    cursor: pointer;
+    //width: 40%; Dandonos igual el formato de la imagen
+    //height: 40%;
+    width: 500px; // Unificando todas las imàgenes para una vista mas cohesionada
+    height: 600px;
+    margin: 15px;
+}

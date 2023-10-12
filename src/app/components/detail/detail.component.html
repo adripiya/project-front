@@ -1,0 +1,16 @@
+<header class="center" *ngIf="response?.description">
+    <h3>Titulo</h3>
+    <p>{{ response?.description }}</p>
+</header>
+<div class="center margin-image">
+    <img [src]="response?.urls?.small">
+</div>
+<div class="center">
+    <p *ngIf="response?.location?.name"> <b>Localización:</b> {{ response?.location?.name }}</p>
+
+    <p *ngIf="response?.user?.name"> <b>Usuario:</b> {{ response?.user?.name }}</p>
+
+    <p *ngIf="response?.likes"> <b>Me gustas:</b> {{ response?.likes }}</p>
+
+    <app-map *ngIf="response?.location?.position" [location]="location"></app-map>
+</div>
