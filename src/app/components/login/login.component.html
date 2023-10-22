@@ -1,0 +1,16 @@
+<div class="alineado">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <label for="user">Usuario*: </label>
+            <input id="user" matInput type="text" formControlName="user">
+            <mat-hint *ngIf="loginForm.controls.user.errors?.['required'] && loginForm.controls.user.touched" class="erroText"> Campo obligatorio </mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <label for="passwd">Contraseña*: </label>
+            <input id="passwd" matInput type="password" formControlName="pass">
+            <mat-hint *ngIf="loginForm.controls.pass.errors?.['required'] && loginForm.controls.pass.touched" class="erroText"> Campo obligatorio </mat-hint>
+        </mat-form-field>
+        <button mat-raised-button class="button-enter" type="submit" [disabled]="!loginForm.valid">Entrar</button>
+    </form>
+
+</div>

@@ -10,18 +10,30 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from './components/map/map.component';
+import { LoginComponent } from './components/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     DetailComponent,
-    MapComponent
+    MapComponent,
+    LoginComponent,
+    HeaderComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,

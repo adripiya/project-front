@@ -1,0 +1,15 @@
+<div id="main" class="main"  *ngIf="!router.url.includes('login')">
+    <div class="color"><p class="text-user"> User01 </p></div>
+    <nav>
+      <a [routerLink]="['/main']" class="home">Inicio</a>
+      <a href="#" class="projects">Eventos</a>
+      <a href="#" class="projects">Mantenimientos</a> <!--Solo admin-->
+      <a href="#" class="projects">Promotores</a> <!--Solo admin-->
+      <a href="#" class="projects">Asignacion evento-promotor</a> <!--Solo admin-->
+      <a href="#" class="projects">Ver solicitudes</a> <!--Solo admin-->
+      <a href="#" class="projects">Mis reservas</a> <!--Solo clientes-->
+      <a href="#" class="projects">Facturas</a> <!--Solo admin-->
+      <a href="#" class="projects">Usuarios</a> <!--Solo admin-->
+   </nav>
+  
+  </div>
