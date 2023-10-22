@@ -5,14 +5,25 @@ import { DetailComponent } from './components/detail/detail.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { EventsComponent } from './components/events/events.component';
+import { PromotoresComponent } from './components/promotores/promotores.component';
+import { UsersComponent } from './components/users/users.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'main', component: MainPageComponent, pathMatch: 'full'},
   {path: 'detail/:id', component: DetailComponent, pathMatch: 'full'},
   {path: 'header', component: HeaderComponent, pathMatch: 'full'},
   {path: 'calendar', component: CalendarComponent, pathMatch: 'full'},
+  {path: 'events', component: EventsComponent, pathMatch: 'full'},
+  {path: 'promotores', component: PromotoresComponent, pathMatch: 'full'},
+  {path: 'facturas', component: FacturasComponent, pathMatch: 'full'},
+  {path: 'users', component: UsersComponent, pathMatch: 'full'},
+
+
+  
 
 ];
 

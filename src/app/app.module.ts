@@ -16,6 +16,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { EventsComponent } from './components/events/events.component';
+import { PromotoresComponent } from './components/promotores/promotores.component';
+import { UsersComponent } from './components/users/users.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     MapComponent,
     LoginComponent,
     HeaderComponent,
-    CalendarComponent
+    CalendarComponent,
+    EventsComponent,
+    PromotoresComponent,
+    UsersComponent,
+    FacturasComponent
   ],
   imports: [
     BrowserModule,
