@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { LoginService } from 'src/app/core/providers/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   protected show: boolean = true;
-  constructor(
+  constructor(private loginService: LoginService,
     protected router: Router ) {}
     
 
@@ -21,5 +22,10 @@ export class HeaderComponent implements OnInit {
 
     public click(): void {
       console.log(this.router.url);
+    }
+
+    public logOut(): void {
+      this.loginService.isLogin = false;
+      this.router.navigate(['login']);
     }
 }

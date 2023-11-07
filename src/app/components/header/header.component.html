@@ -1,5 +1,5 @@
 <div id="main" class="main"  *ngIf="!router.url.includes('login')">
-    <div class="color"><p class="text-user"> User01 </p></div>
+    <div class="color"><p class="text-user"> User01  <mat-icon matTooltip="Cerrar sesión" (click)="logOut()">power_settings_new</mat-icon></p></div>
     <nav>
       <a [routerLink]="['/main']" class="home">Inicio</a>  <!--Solo admin-->
       <a [routerLink]="['/events']" class="projects">Eventos</a>

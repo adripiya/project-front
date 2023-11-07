@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { LoginService } from 'src/app/core/providers/login/login.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent {
     pass: new FormControl('', Validators.required),
   });
 
-  constructor( private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   onSubmit() {
     const query : any = {
@@ -23,7 +24,9 @@ export class LoginComponent {
     }
     console.log(this.loginForm);
     this.loginService.getLogin(query).subscribe((response) => {
-
+      if(this.loginService.isLogin) {
+        this.router.navigate(['main']);
+      }
     })
   }
   

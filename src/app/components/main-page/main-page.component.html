@@ -2,6 +2,7 @@
     <input matInput [formControl]="inputKey" placeholder="Introduzca lo que quiere buscar" class="input-key">
     <button class="button-search" (click)="callServicePage()"><mat-icon>search</mat-icon></button>
 </div>
+<app-calendar [minTab]="true"></app-calendar>
 <app-events [minTab]="true"></app-events>
 <app-promotores [minTab]="true"></app-promotores>
 <div class="main-img">
