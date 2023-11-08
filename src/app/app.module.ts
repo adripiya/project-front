@@ -22,6 +22,9 @@ import { UsersComponent } from './components/users/users.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { MatTableModule } from '@angular/material/table';
+import { ClientesComponent } from './components/clientes/clientes/clientes.component';
+import { RestaurantesComponent } from './components/restaurantes/restaurantes/restaurantes.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { InMemoryDataService } from './in-memory-data.service';
     EventsComponent,
     PromotoresComponent,
     UsersComponent,
-    FacturasComponent
+    FacturasComponent,
+    ClientesComponent,
+    RestaurantesComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     MatPaginatorModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatTableModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )

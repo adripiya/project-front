@@ -1,5 +1,18 @@
 <div *ngIf="minTab">
- <p>Min Tab abierta Promotores</p>
+
+    <h2>Mini lista de promotores</h2>
+
+    <table mat-table [dataSource]="responseShort" class="mat-elevation-z8">
+        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    </table>
+
+
 </div>
 <div *ngIf="!minTab">
 <p>promotores works!</p>
