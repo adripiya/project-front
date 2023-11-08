@@ -39,15 +39,27 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const promotores: Array<Promotor> = [
-      { id: 1, ubicacion: 'A coruña', nombre: 'Pedro Garcia', restaurantes: 2, telefono: 11111111, maxInvitados: 250, minInvitados: 50, catering: false, }
+      { id: 1, ubicacion: 'A coruña', nombre: 'Pedro Garcia', restaurantes: 2, telefono: 11111111, maxInvitados: 250, minInvitados: 50, catering: false, },
+      { id: 1, ubicacion: 'A coruña', nombre: 'Pedro Garcia', restaurantes: 2, telefono: 11111111, maxInvitados: 250, minInvitados: 50, catering: false, },
+      { id: 1, ubicacion: 'A coruña', nombre: 'Pedro Garcia', restaurantes: 2, telefono: 11111111, maxInvitados: 250, minInvitados: 50, catering: false, },
+      { id: 1, ubicacion: 'A coruña', nombre: 'Pedro Garcia', restaurantes: 2, telefono: 11111111, maxInvitados: 250, minInvitados: 50, catering: false, },
+      { id: 1, ubicacion: 'A coruña', nombre: 'Pedro Garcia', restaurantes: 2, telefono: 11111111, maxInvitados: 250, minInvitados: 50, catering: false, },
     ]
 
-    const resaturantes: Array<Restaurante> = [
-      { id: 1, calle: 'Avenida finisterre', lat: 0.00, lon: 0.00, numero: 1, promotorId: 1, nombre: 'Casa de Julia', descripcion: 'prueba' }
+    const restaurantes: Array<Restaurante> = [
+      { id: 1, calle: 'Avenida finisterre', lat: 0.00, lon: 0.00, numero: 1, promotorId: 1, nombre: 'Casa de Julia', descripcion: 'prueba' },
+      { id: 1, calle: 'Avenida finisterre', lat: 0.00, lon: 0.00, numero: 1, promotorId: 1, nombre: 'Casa de Julia', descripcion: 'prueba' },
+      { id: 1, calle: 'Avenida finisterre', lat: 0.00, lon: 0.00, numero: 1, promotorId: 1, nombre: 'Casa de Julia', descripcion: 'prueba' },
+      { id: 1, calle: 'Avenida finisterre', lat: 0.00, lon: 0.00, numero: 1, promotorId: 1, nombre: 'Casa de Julia', descripcion: 'prueba' },
+      { id: 1, calle: 'Avenida finisterre', lat: 0.00, lon: 0.00, numero: 1, promotorId: 1, nombre: 'Casa de Julia', descripcion: 'prueba' },
     ]
 
     const clientes: Array<Cliente> = [
-      { id: 1001, nombre: 'Pedro Pica Piedra', telefono: 666666666, dni: '48000000Q', domicilio: 'Calle invetnada nº10 3ºC', correo: 'pppiedra@gmail.com' }
+      { id: 1001, nombre: 'Pedro Pica Piedra', telefono: 666666666, dni: '48000000Q', domicilio: 'Calle invetnada nº10 3ºC', correo: 'pppiedra@gmail.com' },
+      { id: 1001, nombre: 'Pedro Pica Piedra', telefono: 666666666, dni: '48000000Q', domicilio: 'Calle invetnada nº10 3ºC', correo: 'pppiedra@gmail.com' },
+      { id: 1001, nombre: 'Pedro Pica Piedra', telefono: 666666666, dni: '48000000Q', domicilio: 'Calle invetnada nº10 3ºC', correo: 'pppiedra@gmail.com' },
+      { id: 1001, nombre: 'Pedro Pica Piedra', telefono: 666666666, dni: '48000000Q', domicilio: 'Calle invetnada nº10 3ºC', correo: 'pppiedra@gmail.com' },
+      { id: 1001, nombre: 'Pedro Pica Piedra', telefono: 666666666, dni: '48000000Q', domicilio: 'Calle invetnada nº10 3ºC', correo: 'pppiedra@gmail.com' },
     ]
 
     const login: Login = {
@@ -57,6 +69,6 @@ export class InMemoryDataService implements InMemoryDbService {
       user: 'user01',
     }
 
-    return { heroes, login, events, promotores, resaturantes, clientes };
+    return { heroes, login, events, promotores, restaurantes, clientes };
   }
 }
