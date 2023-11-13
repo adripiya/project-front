@@ -38,4 +38,8 @@ export class RestaurantesComponent {
     }
     
   }
+
+  public addRestaurante(): void {
+    
+  }
 }

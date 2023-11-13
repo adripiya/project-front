@@ -1,0 +1,4 @@
+{
+    "editor.foldingImportsByDefault": false,
+    "javascript.preferences.importModuleSpecifier": "relative"
+}

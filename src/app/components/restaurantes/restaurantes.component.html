@@ -16,8 +16,9 @@
 </div>
 <div *ngIf="!minTab">
 
-    <h2>Mini lista de restaurantes</h2>
-
+    <h2 class="color-text">Restaurantes</h2>
+    <button class="redondo color-text" title="Añadir restaurante" (click)="addRestaurante()"><mat-icon>add</mat-icon></button>
+    <div class="margin-table">
     <table mat-table [dataSource]="response" class="mat-elevation-z8">
         <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
             <th mat-header-cell *matHeaderCellDef> {{column}} </th>
@@ -27,6 +28,6 @@
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
     </table>
-
+</div>
 
 </div>

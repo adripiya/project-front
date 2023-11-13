@@ -2,7 +2,7 @@
   "name": "prueba-adrian",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng g c components/restaurantes/restaurantes",
+    "ng": "ng g c components/shared/dialogs/detailEvents",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
