@@ -26,6 +26,8 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { CreateEventsComponent } from './shared/dialogs/create-events/create-events.component';
 import { DetailEventsComponent } from './shared/dialogs/detail-events/detail-events.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RestaurantePromotorComponent } from './components/restaurante-promotor/restaurante-promotor.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ClientesComponent,
     RestaurantesComponent,
     CreateEventsComponent,
-    DetailEventsComponent
+    DetailEventsComponent,
+    ReservasComponent,
+    RestaurantePromotorComponent
   ],
   imports: [
     BrowserModule,

@@ -12,21 +12,20 @@ import { FacturasComponent } from './components/facturas/facturas.component';
 import { AuthGuard } from './auth-guard.guard';
 import { RestaurantesComponent } from './components/restaurantes/restaurantes.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
+import { RestaurantePromotorComponent } from './components/restaurante-promotor/restaurante-promotor.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full'},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'main', component: MainPageComponent, pathMatch: 'full',
- },
-  { path: 'detail/:id', component: DetailComponent, pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'header', component: HeaderComponent, pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'calendar', component: CalendarComponent, pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'events', component: EventsComponent, pathMatch: 'full' },
-  { path: 'promotores', component: PromotoresComponent, pathMatch: 'full' },
+  { path: 'main', component: MainPageComponent, pathMatch: 'full',},
+  // { path: 'calendar', component: CalendarComponent, pathMatch: 'full'},
+  // { path: 'events', component: EventsComponent, pathMatch: 'full' },
   { path: 'restaurantes', component: RestaurantesComponent, pathMatch: 'full' },
-  { path: 'clientes', component: ClientesComponent, pathMatch: 'full' },
-  { path: 'facturas', component: FacturasComponent, pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'users', component: UsersComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'promotores', component: PromotoresComponent, pathMatch: 'full' },
+  { path: 'restaurante-promotor', component: RestaurantePromotorComponent, pathMatch: 'full' },
+  { path: 'reservas', component: ReservasComponent, pathMatch: 'full'},
+  { path: 'users', component: UsersComponent, pathMatch: 'full'},
 
 
 

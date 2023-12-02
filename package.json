@@ -2,7 +2,7 @@
   "name": "prueba-adrian",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng g s core/providers/usuarios/usuarios",
+    "ng": "ng g c components/restaurante-promotor",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
