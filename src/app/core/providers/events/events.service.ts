@@ -1,19 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Login } from 'src/app/interfaces/login.model';
+import { environment } from 'src/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
-  public requestUrl: string = 'http://localhost';
+  public requestUrl: string = environment.requestUrl;
   private loginUrl = 'api/events'; 
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<Event> {
-    return this.http.get<Event>(this.loginUrl)
+  getEvents(): Observable<any> {
+    return this.http.get<any>(this.loginUrl)
   }
 
+  getCochesDetalle(): Observable<any> {
+    return this.http.get(this.requestUrl);
+  }
 }

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { ClientesService } from 'src/app/core/providers/clientes/clientes.service';
-import { Cliente } from 'src/app/interfaces/clientes.model';
 
 @Component({
   selector: 'app-clientes',
@@ -9,8 +8,8 @@ import { Cliente } from 'src/app/interfaces/clientes.model';
 })
 export class ClientesComponent {
   @Input() minTab?: any;
-  public response: Array<Cliente> = [];
-  public responseShort: Array<Cliente> = [];
+  public response: Array<any> = [];
+  public responseShort: Array<any> = [];
   public pageSize: number = 10;
   public currentPage: number = 1;
   public length: number = 0;

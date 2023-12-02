@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EventsService } from 'src/app/core/providers/events/events.service';
-import { Evento } from 'src/app/interfaces/event.model';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { CreateEventsComponent } from '../shared/dialogs/create-events/create-events.component';
-import { DetailEventsComponent } from '../shared/dialogs/detail-events/detail-events.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateEventsComponent } from '../../shared/dialogs/create-events/create-events.component';
+import { DetailEventsComponent } from '../../shared/dialogs/detail-events/detail-events.component';
 
 @Component({
   selector: 'app-events',
@@ -12,8 +11,8 @@ import { DetailEventsComponent } from '../shared/dialogs/detail-events/detail-ev
 })
 export class EventsComponent implements OnInit {
   @Input() minTab?: any;
-  public response: Array<Evento> = [];
-  public responseShort: Array<Evento> = [];
+  public response: Array<any> = [];
+  public responseShort: Array<any> = [];
   public pageSize: number = 10;
   public currentPage: number = 1;
   public length: number = 0;
@@ -51,7 +50,7 @@ export class EventsComponent implements OnInit {
   }
 
   public viewEvent(id: any): void {
-    const send = this.response.find((event: Evento) =>
+    const send = this.response.find((event: any) =>
       event.id === id
     )
     const dialogRef = this.dialog.open(DetailEventsComponent, { data: send });
@@ -59,5 +58,11 @@ export class EventsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  public click(): void {
+    this.eventsService.getCochesDetalle().subscribe((result: any) => {
+      console.log(this.response);
+    })
   }
 }

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PromotoresService } from 'src/app/core/providers/promotores/promotores.service';
-import { Promotor } from 'src/app/interfaces/promotor.model';
 
 @Component({
   selector: 'app-promotores',
@@ -10,8 +9,8 @@ import { Promotor } from 'src/app/interfaces/promotor.model';
 
 export class PromotoresComponent implements OnInit {
   @Input() minTab?: any;
-  public response: Array<Promotor> = [];
-  public responseShort: Array<Promotor> = [];
+  public response: Array<any> = [];
+  public responseShort: Array<any> = [];
   public pageSize: number = 10;
   public currentPage: number = 1;
   public length: number = 0;

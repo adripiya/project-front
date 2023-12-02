@@ -1,26 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Login } from 'src/app/interfaces/login.model';
+import { environment } from 'src/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  public requestUrl: string = 'http://localhost';
+  public requestUrl: string = environment.requestUrl;
   private loginUrl = 'api/login'; 
   public isLogin: boolean = false;
   
   constructor(private http: HttpClient) { }
 
 
-  // getLogin(query: any): Observable<any> {
-  //   return this.http.get(this.requestUrl +'login' + '?query=' + query);
-  // }
-
-  getLogin(query: any ): Observable<Login> {
+  getLogin(query: any ): Observable<any> {
     this.isLogin = true;
-    return this.http.get<Login>(this.loginUrl)
+    return this.http.get<any>(this.loginUrl)
   }
 
 }

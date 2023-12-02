@@ -1,19 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cliente } from 'src/app/interfaces/clientes.model';
+import { environment } from 'src/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesService {
 
-  public requestUrl: string = 'http://localhost';
+  public requestUrl: string = environment.requestUrl;
   private loginUrl = 'api/clientes'; 
 
   constructor(private http: HttpClient) { }
 
-  getClients(): Observable<Cliente> {
-    return this.http.get<Cliente>(this.loginUrl)
+  getClients(): Observable<any> {
+    return this.http.get<any>(this.loginUrl)
   }
 }

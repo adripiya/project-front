@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PromotoresService } from 'src/app/core/providers/promotores/promotores.service';
 import { RestaurantesService } from 'src/app/core/providers/restaurantes/restaurantes.service';
-import { Promotor } from 'src/app/interfaces/promotor.model';
-import { Restaurante } from 'src/app/interfaces/restaurante.model';
 
 @Component({
   selector: 'app-restaurantes',
@@ -11,8 +9,8 @@ import { Restaurante } from 'src/app/interfaces/restaurante.model';
 })
 export class RestaurantesComponent {
   @Input() minTab?: any;
-  public response: Array<Restaurante> = [];
-  public responseShort: Array<Restaurante> = [];
+  public response: Array<any> = [];
+  public responseShort: Array<any> = [];
   public pageSize: number = 10;
   public currentPage: number = 1;
   public length: number = 0;

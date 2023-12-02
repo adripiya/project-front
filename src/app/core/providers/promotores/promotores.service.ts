@@ -1,19 +1,48 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PromotoresService {
 
-  public requestUrl: string = 'http://localhost';
-  private loginUrl = 'api/promotores'; 
+  public requestUrl: string = environment.requestUrl;
+  private promotores = 'api/promoter';
+  private promotorRestaurante = 'api/promoter/restaurant';
+
+
+  private promotoresUrl = this.requestUrl + this.promotores;
+  private promotorRestauranteUrl = this.requestUrl + this.promotorRestaurante;
+
 
   constructor(private http: HttpClient) { }
 
-  getPromotores(): Observable<Event> {
-    return this.http.get<Event>(this.loginUrl)
+  getPromotores(): Observable<any> {
+    return this.http.get<any>(this.promotoresUrl);
   }
 
+  postPromotores(promotor: any): Observable<any> {
+    return this.http.post<any>(this.promotoresUrl, promotor);
+  }
+
+  putPromotores(promotor: any, id: any): Observable<any> {
+    const newUrl = this.promotoresUrl + '/' + id;
+    return this.http.put<any>(newUrl, promotor);
+  }
+
+  deletePromotores(id: any): Observable<any> {
+    const newUrl = this.promotoresUrl + '/' + id;
+    return this.http.delete<any>(newUrl);
+  }
+
+  atachPromotorRestaurante(promotorRestaurante: any): Observable<any> {
+    return this.http.post<any>(this.promotorRestauranteUrl, promotorRestaurante);
+  }
+
+  detachPromotorRestaurante(promotorRestaurante: any): Observable<any> {
+    const newUrl = this.promotorRestauranteUrl + '/detach';
+    return this.http.post<any>(newUrl, promotorRestaurante);
+  }
 }

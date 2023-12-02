@@ -1,19 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cliente } from 'src/app/interfaces/clientes.model';
-import { Restaurante } from 'src/app/interfaces/restaurante.model';
+import { environment } from 'src/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantesService {
-  public requestUrl: string = 'http://localhost';
-  private loginUrl = 'api/restaurantes'; 
+  private requestUrl: string = environment.requestUrl;
+  private restaurante = 'api/restaurants'; 
+
+  private restauranteUrl = this.requestUrl + this.restaurante;
 
   constructor(private http: HttpClient) { }
 
-  getRestaurantes(): Observable<Restaurante> {
-    return this.http.get<Restaurante>(this.loginUrl)
+  getRestaurantes(): Observable<any> {
+    return this.http.get<any>(this.restauranteUrl);
+  }
+
+  postRestaurante(restaurante: any): Observable<any> {
+    return this.http.post<any>(this.restauranteUrl, restaurante);
+  }
+
+  putRestaurante(restaurante: any, id: any): Observable<any> {
+    const newUrl = this.restauranteUrl + '/' + id
+    return this.http.put<any>(newUrl, restaurante);
+  }
+
+  deleteRestaurante(id: any): Observable<any> {
+    const newUrl = this.restauranteUrl + '/' + id
+    return this.http.delete<any>(newUrl)
   }
 }

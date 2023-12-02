@@ -20,13 +20,11 @@ import { EventsComponent } from './components/events/events.component';
 import { PromotoresComponent } from './components/promotores/promotores.component';
 import { UsersComponent } from './components/users/users.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 import { MatTableModule } from '@angular/material/table';
 import { RestaurantesComponent } from './components/restaurantes/restaurantes.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
-import { CreateEventsComponent } from './components/shared/dialogs/create-events/create-events.component';
-import { DetailEventsComponent } from './components/shared/dialogs/detail-events/detail-events.component';
+import { CreateEventsComponent } from './shared/dialogs/create-events/create-events.component';
+import { DetailEventsComponent } from './shared/dialogs/detail-events/detail-events.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
@@ -62,9 +60,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     MatTableModule,
     MatDialogModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
   ],
   providers: [],
   bootstrap: [AppComponent]
