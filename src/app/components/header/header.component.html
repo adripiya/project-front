@@ -2,13 +2,12 @@
     <div class="color"><p class="text-user"> User01  <mat-icon matTooltip="Cerrar sesión" (click)="logOut()">power_settings_new</mat-icon></p></div>
     <nav>
       <a [routerLink]="['/main']" class="home">Inicio</a>  <!--Solo admin-->
-      <a [routerLink]="['/events']" class="projects">Eventos</a>
+      <!-- <a [routerLink]="['/events']" class="projects">Eventos</a> -->
       <a [routerLink]="['/promotores']" class="projects">Promotores</a> <!--Solo admin-->
       <a [routerLink]="['/restaurantes']" class="projects">Restaurantes</a> <!--Solo admin-->
-      <a [routerLink]="['/clientes']" class="projects">Clientes</a> <!--Solo admin-->
-      <a [routerLink]="['']" class="projects">Ver solicitudes</a> <!--Solo admin-->
-      <a [routerLink]="['']" class="projects">Mis reservas</a> <!--Solo clientes-->
-      <a [routerLink]="['/facturas']" class="projects">Facturas</a> <!--Solo admin-->
+      <a [routerLink]="['/restaurante-promotor']" class="projects">Asociación restaurante-promotor</a> <!--Solo admin-->
+      <!-- <a [routerLink]="['']" class="projects">Ver solicitudes</a> Solo admin -->
+      <a [routerLink]="['/reservas']" class="projects">Reservas</a> <!--Solo clientes-->
       <a [routerLink]="['/users']" class="projects">Usuarios</a> <!--Solo admin-->
    </nav>
   

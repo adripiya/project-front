@@ -3,10 +3,10 @@
     <button class="button-search" (click)="callServicePage()"><mat-icon>search</mat-icon></button>
 </div>
 <app-calendar [minTab]="true"></app-calendar>-->
-<app-events [minTab]="true"></app-events>
+<!-- <app-events [minTab]="true"></app-events> -->
 <app-promotores [minTab]="true"></app-promotores>
 <app-restaurantes [minTab]="true"></app-restaurantes>
-<app-clientes [minTab]="true"></app-clientes>
+<!-- <app-clientes [minTab]="true"></app-clientes> -->
 <div class="main-img">
     <img *ngFor="let image of response" class="preview" [routerLink]="['/detail', image.id]" routerLinkActive="active"
         [src]="image?.urls?.small" title="{{ image?.description }}" alt="{{ image?.alt_description }}">

@@ -1,0 +1,28 @@
+<div class="padding-global">
+    <h2 *ngIf="data">Editar el promotor: {{data.id}}</h2>
+    <h2 *ngIf="!data">Añadir un promotor</h2>
+
+    <form class="form-align" [formGroup]="restaurantePromotorForm">
+
+        <mat-form-field *ngIf="restaurantes">
+            <mat-label>Seleccione un restaurante</mat-label>
+            <mat-select formControlName="restaurant_id">
+                <mat-option *ngFor="let restaurante of restaurantes" [value]="restaurante.id">ID: {{restaurante.id}}
+                    Nombre: {{restaurante.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="promotores">
+            <mat-label>Seleccione un promotor</mat-label>
+            <mat-select formControlName="promoter_id">
+                <mat-option *ngFor="let promotor of promotores" [value]="promotor.id">ID: {{ promotor.id }} Email: {{ promotor.email }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <div class="align-end">
+            <button class="margin-buttons" mat-button (click)="cerrar()">Cancelar</button>
+            <button class="margin-buttons" mat-raised-button color="primary" (click)="crear()">Crear</button>
+        </div>
+    </form>
+</div>

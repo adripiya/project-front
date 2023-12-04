@@ -1,0 +1,57 @@
+<div class="padding-global max-heigth">
+    <h2>Detalle del promotor: {{ data.id }}</h2>
+
+    <div>
+        <a class="p-10"> <mat-hint>Email: </mat-hint>{{ data.email }} </a>
+
+        <a class="p-10"> <mat-hint>Número de teléfono: </mat-hint> {{ data.phoneNumber }} </a>
+        <p>
+            <a class="p-10"> <mat-hint>Nombre: </mat-hint> {{ data.person.name }} </a>
+            <a class="p-10"> <mat-hint>Apellido: </mat-hint> {{ data.person.lastname }} </a>
+            <a class="p-10"> <mat-hint>NIF: </mat-hint> {{ data.person.nif }} </a>
+
+
+        </p>
+
+
+    </div>
+    <div *ngIf="direcciones">
+        <h3>Dirección</h3>
+
+        <div>
+
+            <a class="p-10"> <mat-hint>Calle: </mat-hint>{{ direcciones.street }} </a>
+
+            <a class="p-10"> <mat-hint>Nº: </mat-hint> {{ direcciones.number }} </a>
+
+            <a class="p-10"> <mat-hint>Piso: </mat-hint> {{ direcciones.floor }} </a>
+
+            <p *ngIf="ciudad && codigoPostal">
+                <a class="p-10"> <mat-hint>Ciudad: </mat-hint> {{ ciudad.city }} </a>
+
+                <a class="p-10"> <mat-hint>Código postal: </mat-hint> {{ codigoPostal.postal_code }} </a>
+
+            </p>
+
+        </div>
+    </div>
+    <div *ngIf="data.restaurant.length > 0">
+        <h3>Restaurantes</h3>
+        <div *ngFor="let restaurante of data.restaurant, let i = index">
+
+            <a class="p-10">{{i + 1}}.- <mat-hint> Nombre: </mat-hint>{{ restaurante.name }} </a>
+
+            <a class="p-10"> <mat-hint>Licencia:</mat-hint> {{ restaurante.license }} </a>
+        </div>
+    </div>
+
+    <div class="align-end">
+
+        <button mat-button mat-raised-button (click)="cerrar()">Cerrar</button>
+        <!-- <mat-slide-toggle [(ngModel)]="isAddingDetails">Introducir detalles</mat-slide-toggle> -->
+        <!-- <button mat-button (click)="addDetalles()">Introducir detalles</button> -->
+        <!-- <button mat-raised-button *ngIf="isAddingDetails" (click)="sendDetails()">Añadir detalles</button> -->
+
+
+    </div>
+</div>

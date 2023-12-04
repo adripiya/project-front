@@ -1,33 +1,58 @@
-<div *ngIf="minTab">
-
-    <h2>Mini lista de restaurantes</h2>
-
-    <table mat-table [dataSource]="responseShort" class="mat-elevation-z8">
-        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-    </table>
-
-
-</div>
-<div *ngIf="!minTab">
-
+<div>
     <h2 class="color-text">Restaurantes</h2>
-    <button class="redondo color-text" title="Añadir restaurante" (click)="addRestaurante()"><mat-icon>add</mat-icon></button>
+    <button *ngIf="!minTab" class="redondo color-text" title="Añadir restaurante"
+        (click)="addRestaurante()"><mat-icon>add</mat-icon></button>
     <div class="margin-table">
-    <table mat-table [dataSource]="response" class="mat-elevation-z8">
-        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-            <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-        </ng-container>
+        <table mat-table [dataSource]="restaurantes" class="mat-elevation-z8">
 
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-    </table>
-</div>
+            <ng-container matColumnDef="id" sticky>
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="licencia">
+                <th mat-header-cell *matHeaderCellDef> Licencia </th>
+                <td mat-cell *matCellDef="let element"> {{element.license}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="maxGente">
+                <th mat-header-cell *matHeaderCellDef> Máximo personas </th>
+                <td mat-cell *matCellDef="let element"> {{element.maxPeople}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="minGente">
+                <th mat-header-cell *matHeaderCellDef> Mínimo Personas </th>
+                <td mat-cell *matCellDef="let element"> {{element.minPeople}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="waiters">
+                <th mat-header-cell *matHeaderCellDef> Camareros </th>
+                <td mat-cell *matCellDef="let element"> {{element.waiters}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="options" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef class="text-align" aria-label="row actions">Opciones</th>
+                <td mat-cell *matCellDef="let element" class="text-align">
+
+                    <mat-icon matTooltip="Ver detalle del restaurante" class="icon-margin"
+                        (click)="viewRestaurante(element.id)">remove_red_eye</mat-icon>
+
+                    <mat-icon matTooltip="Borrar restaurante" class="icon-margin"
+                        (click)="deleteRestaurante(element.id)">delete</mat-icon>
+                    <mat-icon matTooltip="Editar restaurante" class="icon-margin"
+                        (click)="addRestaurante(element.id)">edit</mat-icon>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table>
+    </div>
+
 
 </div>

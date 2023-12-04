@@ -1,0 +1,68 @@
+<div class="padding-global">
+    <h2 *ngIf="data">Editar el restaurante: {{data.id}}</h2>
+    <h2 *ngIf="!data">Añadir un restaurante</h2>
+
+    <form class="form-align" [formGroup]="promotorForm">
+      <mat-form-field class="pad-form" appearance="fill">
+        <mat-label>Número de licencia</mat-label>
+        <input matInput placeholder="Número de licencia" formControlName="license">
+      </mat-form-field>
+
+      <mat-form-field class="pad-form" appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field  class="pad-form" appearance="fill">
+        <mat-label>Camareros</mat-label>
+        <input matInput type="number" placeholder="Camareros" formControlName="waiters">
+      </mat-form-field>
+
+      <mat-form-field  class="pad-form" appearance="fill">
+        <mat-label>Mínimo de asistentes</mat-label>
+        <input matInput type="number" placeholder="Mínimo de asistentes" formControlName="minPeople">
+      </mat-form-field>
+
+      <mat-form-field  class="pad-form" appearance="fill">
+        <mat-label>Máximo de asistentes</mat-label>
+        <input matInput type="number" placeholder="Máximo de asistentes" formControlName="maxPeople">
+      </mat-form-field>
+
+      <mat-form-field  class="pad-form" appearance="fill">
+        <mat-label>Precio por persona</mat-label>
+        <input matInput type="number" placeholder="Precio por persona" formControlName="pricePerPerson">
+      </mat-form-field>
+
+      <mat-form-field  *ngIf="!data" class="pad-form" appearance="fill">
+        <mat-label>Código postal</mat-label>
+        <input matInput placeholder="Código postal" formControlName="postal_code">
+      </mat-form-field>
+      
+      <mat-form-field *ngIf="!data" class="pad-form" appearance="fill">
+        <mat-label>Nombre de la ciudad</mat-label>
+        <input matInput placeholder="Nombre de la ciudad" formControlName="city">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!data" class="pad-form" appearance="fill">
+        <mat-label>Nombre de la calle</mat-label>
+        <input matInput placeholder="Nombre de la calle" formControlName="street">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!data" class="pad-form" appearance="fill">
+        <mat-label>Número de la calle</mat-label>
+        <input matInput placeholder="Número de la calle" formControlName="number">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!data" class="pad-form" appearance="fill">
+        <mat-label>Piso</mat-label>
+        <input matInput placeholder="Piso" formControlName="floor">
+      </mat-form-field>
+  
+  
+
+      <div class="align-end">
+        <button class="margin-buttons" mat-button (click)="cerrar()">Cancelar</button>
+        <button class="margin-buttons" mat-raised-button color="primary" (click)="crear()" >Guardar</button>
+      </div>
+    </form>
+  </div>

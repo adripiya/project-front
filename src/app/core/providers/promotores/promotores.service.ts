@@ -11,10 +11,13 @@ export class PromotoresService {
   public requestUrl: string = environment.requestUrl;
   private promotores = 'api/promoter';
   private promotorRestaurante = 'api/promoter/restaurant';
+  private restaurantePromotor = 'api/restaurantsPromoters';
 
 
   private promotoresUrl = this.requestUrl + this.promotores;
   private promotorRestauranteUrl = this.requestUrl + this.promotorRestaurante;
+  private restaurantePromotorUrl = this.requestUrl + this.restaurantePromotor;
+
 
 
   constructor(private http: HttpClient) { }
@@ -35,6 +38,10 @@ export class PromotoresService {
   deletePromotores(id: any): Observable<any> {
     const newUrl = this.promotoresUrl + '/' + id;
     return this.http.delete<any>(newUrl);
+  }
+
+  getPromotorRestaurante(): Observable<any> {
+    return this.http.get<any>(this.restaurantePromotorUrl);
   }
 
   atachPromotorRestaurante(promotorRestaurante: any): Observable<any> {

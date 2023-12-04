@@ -1,0 +1,46 @@
+<div class="padding-global max-heigth">
+    <h2>Detalle de la asociacion restaurante-promotor: {{ data.id }}</h2>
+
+    <div>
+        <h3>Restaurante</h3>
+        <a class="p-10"> <mat-hint>Id: </mat-hint>{{ data.restaurant.id }} </a>
+
+        <a class="p-10"> <mat-hint>Nombre: </mat-hint> {{ data.restaurant.name }} </a>
+        <a class="p-10"> <mat-hint>Licencia: </mat-hint> {{ data.restaurant.license }} </a>
+
+        <p>
+            <a class="p-10"> <mat-hint>Camareros: </mat-hint> {{ data.restaurant.waiters }} </a>
+            <a class="p-10"> <mat-hint>Máximo de comensales: </mat-hint> {{ data.restaurant.maxPeople }} </a>
+            <a class="p-10"> <mat-hint>Minimo de comensales: </mat-hint> {{ data.restaurant.minPeople }} </a>
+
+
+        </p>
+
+
+    </div>
+    <div>
+        <h3>Promotor</h3>
+        <a class="p-10"> <mat-hint>Id: </mat-hint>{{ data.promoter.id }} </a>
+
+        <a class="p-10"> <mat-hint>Email: </mat-hint> {{ data.promoter.email }} </a>
+
+        <p>
+            <a class="p-10"> <mat-hint>Número de teléfono: </mat-hint> {{ data.promoter.phoneNumber }} </a>
+
+
+
+        </p>
+
+
+    </div>
+
+    <div class="align-end">
+
+        <button mat-button mat-raised-button (click)="cerrar()">Cerrar</button>
+        <!-- <mat-slide-toggle [(ngModel)]="isAddingDetails">Introducir detalles</mat-slide-toggle> -->
+        <!-- <button mat-button (click)="addDetalles()">Introducir detalles</button> -->
+        <!-- <button mat-raised-button *ngIf="isAddingDetails" (click)="sendDetails()">Añadir detalles</button> -->
+
+
+    </div>
+</div>

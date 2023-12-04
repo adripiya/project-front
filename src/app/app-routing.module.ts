@@ -9,7 +9,6 @@ import { EventsComponent } from './components/events/events.component';
 import { PromotoresComponent } from './components/promotores/promotores.component';
 import { UsersComponent } from './components/users/users.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
-import { AuthGuard } from './auth-guard.guard';
 import { RestaurantesComponent } from './components/restaurantes/restaurantes.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { ReservasComponent } from './components/reservas/reservas.component';

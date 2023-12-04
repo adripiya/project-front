@@ -28,6 +28,16 @@ import { DetailEventsComponent } from './shared/dialogs/detail-events/detail-eve
 import { MatDialogModule } from '@angular/material/dialog';
 import { RestaurantePromotorComponent } from './components/restaurante-promotor/restaurante-promotor.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
+import { CreatePromotorComponent } from './shared/dialogs/create-promotor/create-promotor.component';
+import { DetailPromotorComponent } from './shared/dialogs/detail-promotor/detail-promotor.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { DetailRestauranteComponent } from './shared/dialogs/detail-restaurante/detail-restaurante.component';
+import { CreateRestauranteComponent } from './shared/dialogs/create-restaurante/create-restaurante.component';
+import { CreateRestaurantePromotorComponent } from './shared/dialogs/create-restaurante-promotor/create-restaurante-promotor.component';
+import { DetailRestaurantePromotorComponent } from './shared/dialogs/detail-restaurante-promotor/detail-restaurante-promotor.component';
+import {MatSelectModule} from '@angular/material/select';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +57,13 @@ import { ReservasComponent } from './components/reservas/reservas.component';
     CreateEventsComponent,
     DetailEventsComponent,
     ReservasComponent,
-    RestaurantePromotorComponent
+    RestaurantePromotorComponent,
+    CreatePromotorComponent,
+    DetailPromotorComponent,
+    DetailRestauranteComponent,
+    CreateRestauranteComponent,
+    CreateRestaurantePromotorComponent,
+    DetailRestaurantePromotorComponent
   ],
   imports: [
     BrowserModule,
@@ -64,8 +80,10 @@ import { ReservasComponent } from './components/reservas/reservas.component';
     HttpClientModule,
     MatTableModule,
     MatDialogModule,
+    MatTooltipModule,
+    MatSelectModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
