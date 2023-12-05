@@ -36,7 +36,13 @@ import { CreateRestauranteComponent } from './shared/dialogs/create-restaurante/
 import { CreateRestaurantePromotorComponent } from './shared/dialogs/create-restaurante-promotor/create-restaurante-promotor.component';
 import { DetailRestaurantePromotorComponent } from './shared/dialogs/detail-restaurante-promotor/detail-restaurante-promotor.component';
 import {MatSelectModule} from '@angular/material/select';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+import { DetailReservaComponent } from './shared/dialogs/detail-reserva/detail-reserva.component';
+import { CreateReservaComponent } from './shared/dialogs/create-reserva/create-reserva.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { CreateUsuarioComponent } from './shared/dialogs/create-usuario/create-usuario.component';
+import { DetailUsuarioComponent } from './shared/dialogs/detail-usuario/detail-usuario.component';
+
 
 
 @NgModule({
@@ -63,7 +69,11 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     DetailRestauranteComponent,
     CreateRestauranteComponent,
     CreateRestaurantePromotorComponent,
-    DetailRestaurantePromotorComponent
+    DetailRestaurantePromotorComponent,
+    DetailReservaComponent,
+    CreateReservaComponent,
+    CreateUsuarioComponent,
+    DetailUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +92,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatDialogModule,
     MatTooltipModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]

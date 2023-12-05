@@ -2,7 +2,7 @@
   "name": "prueba-adrian",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng g c shared/dialogs/detail-restaurante-promotor",
+    "ng": "ng g c shared/dialogs/detail-usuario",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -24,6 +24,7 @@
     "@types/maplibre-gl": "^1.14.0",
     "angular-in-memory-web-api": "^0.16.0",
     "maplibre-gl": "^3.4.0",
+    "moment": "^2.29.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

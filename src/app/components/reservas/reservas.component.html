@@ -1,1 +1,53 @@
-<p>reservas works!</p>
+<div>
+    <h2 class="color-text">Reservas</h2>
+    <button *ngIf="!minTab" class="redondo color-text" title="Añadir restaurante"
+        (click)="addRestaurante()"><mat-icon>add</mat-icon></button>
+    <div class="margin-table">
+        <table mat-table [dataSource]="reservas" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="id" sticky>
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="initialD">
+                <th mat-header-cell *matHeaderCellDef> Fecha de inicio </th>
+                <td mat-cell *matCellDef="let element"> {{element.initial_date | date : "dd-MM-YYYY"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="state">
+                <th mat-header-cell *matHeaderCellDef> Estado </th> 
+                <td mat-cell *matCellDef="let element"> {{element.state_id }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="totalPeople">
+                <th mat-header-cell *matHeaderCellDef> Personas </th>
+                <td mat-cell *matCellDef="let element"> {{element.totalPeople}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="totalPrice">
+                <th mat-header-cell *matHeaderCellDef> Precio </th>
+                <td mat-cell *matCellDef="let element"> {{element.totalPrice}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="options" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef class="text-align" aria-label="row actions">Opciones</th>
+                <td mat-cell *matCellDef="let element" class="text-align">
+
+                    <mat-icon matTooltip="Ver detalle de la reserva" class="icon-margin"
+                        (click)="viewRestaurante(element.id)">remove_red_eye</mat-icon>
+
+                    <mat-icon matTooltip="Borrar reserva" class="icon-margin"
+                        (click)="deleteRestaurante(element.id)">delete</mat-icon>
+                    <mat-icon matTooltip="Editar reserva" class="icon-margin"
+                        (click)="addRestaurante(element.id)">edit</mat-icon>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table>
+    </div>
+
+
+</div>

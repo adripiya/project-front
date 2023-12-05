@@ -1,0 +1,39 @@
+<div class="padding-global max-heigth">
+    <h2>Detalle del usuario: {{ data.id }}</h2>
+
+    <div>
+        <p > <mat-hint>Rol: </mat-hint>{{ data.role }} </p>
+
+        <p> <mat-hint>Email:</mat-hint> {{ data.email }} </p>
+
+        <p> <mat-hint>Creado en:</mat-hint> {{ data.created_at | date : "dd-MM-YYYY" }} </p>
+        <p> <mat-hint>Actualizado en:</mat-hint> {{ data.updated_at | date : "dd-MM-YYYY" }} </p>
+
+
+    </div>
+    
+    <div *ngIf="data?.person">
+        <h3>Personas</h3>
+        <div>
+
+            <p> <mat-hint>Id: </mat-hint>{{ data.person.id }} </p>
+
+            <p> <mat-hint>Nombre:</mat-hint> {{ data.person.name }} </p>
+
+            <p> <mat-hint>Apellido:</mat-hint> {{ data.person.lastname }} </p>
+
+            <p> <mat-hint>NIF:</mat-hint> {{ data.person.nif }} </p>
+
+            <p> <mat-hint>Creado en:</mat-hint> {{ data.person.created_at | date : "dd-MM-YYYY" }} </p>
+
+        </div>
+    </div>
+
+    <div class="align-end">
+
+        <button class="align-end" mat-button mat-raised-button (click)="cerrar()">Cerrar</button>
+
+
+
+    </div>
+</div>

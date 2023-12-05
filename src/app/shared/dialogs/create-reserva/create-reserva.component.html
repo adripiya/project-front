@@ -1,0 +1,59 @@
+<div class="padding-global">
+    <h2 *ngIf="data">Editar la reserva: {{data.id}}</h2>
+    <h2 *ngIf="!data">Añadir una reserva</h2>
+
+    <form class="form-align" [formGroup]="reservaForm">
+
+        <mat-form-field *ngIf="!data" class="example-full-width">
+            <mat-label>Introduzca la fecha del evento</mat-label>
+            <input (click)="picker.open()" formControlName="initial_date" matInput [matDatepicker]="picker">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button *ngIf="!data" class="margin-buttons" mat-button (click)="buscar()">Buscar</button>
+        <p *ngIf="data">Fecha del evento {{data.initial_date | date : "dd-MM-YYYY" }}</p>
+
+        <mat-form-field  *ngIf="newRestaurantes?.length > 0 && searched && !data">
+            <mat-label>Seleccione un restaurante</mat-label>
+            <mat-select formControlName="restaurant_id" (selectionChange)="buscarPromotores()">
+                <mat-option *ngFor="let restaurante of newRestaurantes" [value]="restaurante.id">ID: {{restaurante.id}}
+                    Nombre: {{restaurante.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- CONTROLAR LA BUSQUEDA DE FECHAS + PROMOTORES DE RESTAURANTE UNA VEZ ESTE HA SIDO SELECCIONADO -->
+        <mat-form-field *ngIf="promotores?.length > 0 && searched && !data">
+            <mat-label>Seleccione un promotor</mat-label>
+            <mat-select formControlName="promoter_id">
+                <mat-option *ngFor="let promotor of promotores" [value]="promotor.id">ID: {{ promotor.id }} Email: {{
+                    promotor.email }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="data ||( estados && searched)">
+            <mat-label>Seleccione un estado</mat-label>
+            <mat-select formControlName="state_id">
+                <mat-option *ngFor="let estado of estados" [value]="estado.id">{{ estado.state }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="data || searched" class="pad-form" appearance="fill">
+            <mat-label>Comensales</mat-label>
+            <input type="number" matInput placeholder="Comensales" formControlName="totalPeople">
+        </mat-form-field>
+        <p *ngIf="restauranteSelect"> Precio por Persona {{ restauranteSelect.pricePerPerson }}</p>
+
+        <mat-form-field *ngIf="data || searched" class="pad-form" appearance="fill">
+            <mat-label>Precio total</mat-label>
+            <input type="number" matInput placeholder="Precio total" formControlName="totalPrice">
+        </mat-form-field>
+
+        <div *ngIf="searched || data" class="align-end">
+            <button class="margin-buttons" mat-button (click)="cerrar()">Cancelar</button>
+            <button *ngIf="!data" class="margin-buttons" mat-raised-button color="primary" (click)="crear()">Crear</button>
+            <button *ngIf="data" class="margin-buttons" mat-raised-button color="primary" (click)="crear()">Guardar</button>
+
+        </div>
+    </form>
+</div>

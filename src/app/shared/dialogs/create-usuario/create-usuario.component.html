@@ -1,0 +1,72 @@
+<div class="padding-global">
+    <h2 *ngIf="isCreate">Crear un Usuario</h2>
+    <h2 *ngIf="!isCreate">Editar un Usuario</h2>
+
+    <form [formGroup]="userForm">
+
+      <mat-form-field *ngIf="isCreate">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="role">
+          <mat-option value="admin">Admin</mat-option>
+          <mat-option value="regularuser">User</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" placeholder="Contraseña" formControlName="password">
+      </mat-form-field>
+
+      <div *ngIf="data?.person_id === null && !isCreate">
+        <mat-form-field appearance="fill">
+            <mat-label>Código postal</mat-label>
+            <input matInput placeholder="Código postal" formControlName="postal_code">
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre de la ciudad</mat-label>
+            <input matInput placeholder="Nombre de la ciudad" formControlName="city">
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre de la calle</mat-label>
+            <input matInput placeholder="Nombre de la calle" formControlName="street">
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Número de la calle</mat-label>
+            <input matInput placeholder="Número de la calle" formControlName="number">
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Piso</mat-label>
+            <input matInput placeholder="Piso" formControlName="floor">
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre" formControlName="name">
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Apellido</mat-label>
+            <input matInput placeholder="Apellido" formControlName="lastName">
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>NIF</mat-label>
+            <input matInput placeholder="NIF" formControlName="nif">
+          </mat-form-field>
+
+      </div>
+      <div class="align-end">
+        <button class="margin-buttons" mat-button (click)="cerrar()">Cancelar</button>
+        <button class="margin-buttons" mat-raised-button color="primary" (click)="crear()" >Guardar</button>
+      </div>
+    </form>
+  </div>

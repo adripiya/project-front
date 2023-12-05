@@ -12,12 +12,16 @@ export class ReservasService {
   private newReserva = 'api/bookings/newBooking';
   private reserva = 'api/bookings';
   private reservaDetalle = 'api/bookingDetails';
+  private estados = 'api/states';
+
 
 
 
   private newReservaUrl = this.requestUrl + this.newReserva;
   private reservaUrl = this.requestUrl + this.reserva;
   private reservadetalleUrl = this.requestUrl + this.reservaDetalle;
+  private estadosUrl = this.requestUrl + this.estados;
+
 
 
 
@@ -28,7 +32,7 @@ export class ReservasService {
   }
 
   postReserva(reserva: any): Observable<any> {
-    return this.http.post<any>(this.newReservaUrl, reserva);
+    return this.http.post<any>(this.reservaUrl, reserva);
   }
 
   putReserva(reserva: any, id: any): Observable<any> {
@@ -57,5 +61,9 @@ export class ReservasService {
   deleteReservaDetalle(id: any): Observable<any> {
     const newUrl = this.reservadetalleUrl + '/' + id
     return this.http.delete<any>(newUrl)
+  }
+
+  getEstados(): Observable<any> {
+    return this.http.get<any>(this.estadosUrl);
   }
 }

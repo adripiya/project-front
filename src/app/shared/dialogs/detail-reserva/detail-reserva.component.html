@@ -1,0 +1,48 @@
+<div class="padding-global">
+    <h2>Detalle de la reserva: {{ data.id }}</h2>
+
+    <div>
+
+        <p> <mat-hint>Fecha de inicio: </mat-hint>{{ data.initial_date | date : "dd-MM-YYYY" }} </p>
+
+
+        <p> <mat-hint>Fecha de fin:</mat-hint> {{ data.end_date | date : "dd-MM-YYYY" }} </p>
+
+        <h3>Usuario</h3>
+
+        <p> <mat-hint>ID:</mat-hint> {{ data.user.id }} </p>
+
+
+        <p> <mat-hint>Email:</mat-hint> {{ data.user.email }} </p>
+
+
+    </div>
+
+    <div *ngIf="promotorRestaurante">
+        <h3>Restaurante</h3>
+        <div>
+
+            <p> <mat-hint>Id: </mat-hint>{{ promotorRestaurante.restaurant.id }} </p>
+
+            <p> <mat-hint>Nombre:</mat-hint> {{ promotorRestaurante.restaurant.name }} </p>
+
+            <p> <mat-hint>Licencia:</mat-hint> {{ promotorRestaurante.restaurant.license }} </p>
+
+
+        </div>
+
+        <h3>Promotor</h3>
+        <div>
+
+            <p> <mat-hint>Id: </mat-hint>{{ promotorRestaurante.promoter.id }} </p>
+
+            <p> <mat-hint>Email: </mat-hint> {{ promotorRestaurante.promoter.email }} </p>
+
+            <p> <mat-hint>Número de teléfono: </mat-hint> {{ promotorRestaurante.promoter.phoneNumber }} </p>
+
+
+        </div>
+    </div>
+    <button class="align-end" mat-raised-button (click)="cerrar()">Cerrar</button>
+
+</div>
