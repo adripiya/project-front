@@ -44,7 +44,7 @@
         </mat-form-field>
         <p *ngIf="restauranteSelect"> Precio por Persona {{ restauranteSelect.pricePerPerson }}</p>
 
-        <mat-form-field *ngIf="data || searched" class="pad-form" appearance="fill">
+        <mat-form-field *ngIf="data" class="pad-form" appearance="fill">
             <mat-label>Precio total</mat-label>
             <input type="number" matInput placeholder="Precio total" formControlName="totalPrice">
         </mat-form-field>

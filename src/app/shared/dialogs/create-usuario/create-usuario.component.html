@@ -4,7 +4,7 @@
 
     <form [formGroup]="userForm">
 
-      <mat-form-field *ngIf="isCreate">
+      <mat-form-field *ngIf="isCreate && data?.externalUser === false">
         <mat-label>Rol</mat-label>
         <mat-select formControlName="role">
           <mat-option value="admin">Admin</mat-option>
@@ -22,7 +22,7 @@
         <input matInput type="password" placeholder="Contraseña" formControlName="password">
       </mat-form-field>
 
-      <div *ngIf="data?.person_id === null && !isCreate">
+      <div *ngIf="(data?.person_id === null && !isCreate) || data?.externalUser === true">
         <mat-form-field appearance="fill">
             <mat-label>Código postal</mat-label>
             <input matInput placeholder="Código postal" formControlName="postal_code">

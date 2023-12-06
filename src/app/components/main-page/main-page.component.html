@@ -6,6 +6,9 @@
 <!-- <app-events [minTab]="true"></app-events> -->
 <app-promotores [minTab]="true"></app-promotores>
 <app-restaurantes [minTab]="true"></app-restaurantes>
+<app-reservas [minTab]="true"></app-reservas>
+<app-users [minTab]="true"></app-users>
+
 <!-- <app-clientes [minTab]="true"></app-clientes> -->
 <div class="main-img">
     <img *ngFor="let image of response" class="preview" [routerLink]="['/detail', image.id]" routerLinkActive="active"

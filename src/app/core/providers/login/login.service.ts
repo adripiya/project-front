@@ -8,15 +8,21 @@ import { environment } from 'src/enviroment';
 })
 export class LoginService {
   public requestUrl: string = environment.requestUrl;
-  private loginUrl = 'api/login'; 
+  private login = 'api/login'; 
   public isLogin: boolean = false;
+  public rol: any;
+  public userId: any;
+  public userName: any;
+
+
+  private loginUrl: any = this.requestUrl + this.login;
   
   constructor(private http: HttpClient) { }
 
 
   getLogin(query: any ): Observable<any> {
     this.isLogin = true;
-    return this.http.get<any>(this.loginUrl)
+    return this.http.post<any>(this.loginUrl, query);
   }
 
 }

@@ -76,10 +76,16 @@
    }
 
    .text-user {
-    width: 100px;
+    width: 200px;
     border: solid 1px;
     text-align: center;
+    margin-right: 10px;
     height: 25px;
     font-size: 14px;
     padding-top: 8px;
+   }
+
+   .icon {
+    position: absolute;
+    top: 15px;
    }

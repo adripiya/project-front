@@ -11,7 +11,7 @@ import { LoginService } from 'src/app/core/providers/login/login.service';
 export class HeaderComponent implements OnInit {
 
   protected show: boolean = true;
-  constructor(private loginService: LoginService,
+  constructor(protected loginService: LoginService,
     protected router: Router ) {}
     
 
@@ -26,6 +26,13 @@ export class HeaderComponent implements OnInit {
 
     public logOut(): void {
       this.loginService.isLogin = false;
+      this.loginService.userId = '';
+      this.loginService.rol = '';
+      this.loginService.userName = '';
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("userId");
+      sessionStorage.removeItem("userName");
+      sessionStorage.removeItem("rol");
       this.router.navigate(['login']);
     }
 }

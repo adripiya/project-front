@@ -1,11 +1,12 @@
 <div id="main" class="main"  *ngIf="!router.url.includes('login')">
-    <div class="color"><p class="text-user"> User01  <mat-icon matTooltip="Cerrar sesión" (click)="logOut()">power_settings_new</mat-icon></p></div>
+  <div class="color"><p class="text-user"> {{loginService.userName}} </p> <mat-icon class="icon" matTooltip="Cerrar sesión" (click)="logOut()">power_settings_new</mat-icon></div>
+    
     <nav>
-      <a [routerLink]="['/main']" class="home">Inicio</a>  <!--Solo admin-->
+      <a [routerLink]="['/main']"  *ngIf="loginService.rol === 'admin'" class="home">Inicio</a>  <!--Solo admin-->
       <!-- <a [routerLink]="['/events']" class="projects">Eventos</a> -->
-      <a [routerLink]="['/promotores']" class="projects">Promotores</a> <!--Solo admin-->
-      <a [routerLink]="['/restaurantes']" class="projects">Restaurantes</a> <!--Solo admin-->
-      <a [routerLink]="['/restaurante-promotor']" class="projects">Asociación restaurante-promotor</a> <!--Solo admin-->
+      <a [routerLink]="['/promotores']" *ngIf="loginService.rol === 'admin'" class="projects">Promotores</a> <!--Solo admin-->
+      <a [routerLink]="['/restaurantes']" *ngIf="loginService.rol === 'admin'" class="projects">Restaurantes</a> <!--Solo admin-->
+      <a [routerLink]="['/restaurante-promotor']"  *ngIf="loginService.rol === 'admin'" class="projects">Asociación restaurante-promotor</a> <!--Solo admin-->
       <!-- <a [routerLink]="['']" class="projects">Ver solicitudes</a> Solo admin -->
       <a [routerLink]="['/reservas']" class="projects">Reservas</a> <!--Solo clientes-->
       <a [routerLink]="['/users']" class="projects">Usuarios</a> <!--Solo admin-->

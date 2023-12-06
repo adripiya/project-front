@@ -1,9 +1,9 @@
 <div>
     <h2 class="color-text">Usuarios </h2>
-    <button *ngIf="!minTab" class="redondo color-text" title="Añadir usuario"
+    <button *ngIf="!minTab && loginService.rol === 'admin'" class="redondo color-text" title="Añadir usuario"
         (click)="addUsuario()"><mat-icon>add</mat-icon></button>
     <div class="margin-table">
-        <table mat-table [dataSource]="usuarios" class="mat-elevation-z8">
+        <table mat-table [dataSource]="newUsuarios" class="mat-elevation-z8">
 
             <ng-container matColumnDef="id" sticky>
                 <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -37,7 +37,7 @@
                     <mat-icon matTooltip="Ver detalle del usuario" class="icon-margin"
                         (click)="viewUsuario(element.id)">remove_red_eye</mat-icon>
 
-                    <mat-icon matTooltip="Borrar usuario" class="icon-margin"
+                    <mat-icon matTooltip="Borrar usuario" *ngIf="loginService.rol === 'admin'" class="icon-margin"
                         (click)="deleteUsuario(element.id)">delete</mat-icon>
                     <mat-icon matTooltip="Editar usuario" class="icon-margin"
                         (click)="addUsuario(element.id)">edit</mat-icon>

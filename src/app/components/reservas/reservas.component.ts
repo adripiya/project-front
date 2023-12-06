@@ -5,6 +5,7 @@ import { ReservasService } from 'src/app/core/providers/reservas/reservas.servic
 import { CreateReservaComponent } from 'src/app/shared/dialogs/create-reserva/create-reserva.component';
 import { DetailReservaComponent } from 'src/app/shared/dialogs/detail-reserva/detail-reserva.component';
 import moment from 'moment';
+import { LoginService } from 'src/app/core/providers/login/login.service';
 
 @Component({
   selector: 'app-reservas',
@@ -24,11 +25,12 @@ export class ReservasComponent {
   public ciudad_id: any;
   public direccion_id: any;
   public person_id: any;
+  public newReservas: any;
 
   public displayedColumns: string[] = ['id', 'initialD', 'state', 'totalPeople', 'totalPrice', 'options'];
   public columnsToDisplay: string[] = this.displayedColumns.slice();
 
-  constructor(private reservasService: ReservasService,
+  constructor(private reservasService: ReservasService, protected loginService: LoginService,
     public dialog: MatDialog) { }
 
 
@@ -41,8 +43,8 @@ export class ReservasComponent {
   public addRestaurante(id?: any): void {
     let dialogRef!: any;
     if (id) {
-      const send = this.reservas.find((restaurante: any) =>
-        restaurante.id === id
+      const send = this.reservas.find((reserva: any) =>
+        reserva.id === id
       )
       dialogRef = this.dialog.open(CreateReservaComponent, { data: send });
     } else {
@@ -72,7 +74,7 @@ export class ReservasComponent {
             "totalPrice": form.value.totalPrice,
             "totalPeople": form.value.totalPeople,
             "state_id": form.value.state_id ? form.value.state_id : 1,
-            "user_id": 1, // poner id del usuario cuando se haga el login
+            "user_id": this.loginService.userId, // poner id del usuario cuando se haga el login
             "restaurant_promoter_id": form.value.restaurant_promoter_id,
           }
           this.reservasService.postReserva(newReserva).subscribe((result: any) => {
@@ -97,8 +99,20 @@ export class ReservasComponent {
   public getReserva(): void {
     this.reservasService.getReservas().subscribe((result: any) => {
       this.reservas = result;
-      if (this.minTab && this.reservas.length > 3) {
-        this.reservas.length = 3;
+      this.newReservas = this.reservas;
+
+      if (this.minTab && this.newReservas.length > 3) {
+        this.newReservas.length = 3;
+      }
+      if(this.loginService.rol !== 'admin') {
+         this.displayedColumns = ['id', 'initialD', 'state', 'totalPeople', 'totalPrice'];
+        this.columnsToDisplay = this.displayedColumns.slice();
+        this.newReservas = [];
+        this.reservas.forEach((reserva: any) => {
+          if(reserva.user_id === Number(this.loginService.userId)) {
+            this.newReservas.push(reserva);
+          }
+        })
       }
     })
   }

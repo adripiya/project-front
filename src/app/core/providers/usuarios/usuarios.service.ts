@@ -10,8 +10,12 @@ export class UsuariosService {
 
   private requestUrl: string = environment.requestUrl;
   private user = 'api/users'; 
+  private register = 'api/register'; 
+
 
   private userUrl = this.requestUrl + this.user;
+  private registerUrl = this.requestUrl + this.register;
+
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +25,10 @@ export class UsuariosService {
 
   postUsuario(user: any): Observable<any> {
     return this.http.post<any>(this.userUrl, user);
+  }
+
+  registerUsuario(user: any): Observable<any> {
+    return this.http.post<any>(this.registerUrl, user);
   }
 
   putUsuario(user: any, id: any): Observable<any> {

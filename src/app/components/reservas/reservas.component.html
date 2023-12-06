@@ -2,8 +2,8 @@
     <h2 class="color-text">Reservas</h2>
     <button *ngIf="!minTab" class="redondo color-text" title="Añadir restaurante"
         (click)="addRestaurante()"><mat-icon>add</mat-icon></button>
-    <div class="margin-table">
-        <table mat-table [dataSource]="reservas" class="mat-elevation-z8">
+    <div class="margin-table" *ngIf="newReservas?.length > 0">
+        <table mat-table [dataSource]="newReservas" class="mat-elevation-z8">
 
             <ng-container matColumnDef="id" sticky>
                 <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -30,7 +30,7 @@
                 <td mat-cell *matCellDef="let element"> {{element.totalPrice}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="options" stickyEnd>
+            <ng-container matColumnDef="options" stickyEnd *ngIf="loginService.rol === 'admin'">
                 <th mat-header-cell *matHeaderCellDef class="text-align" aria-label="row actions">Opciones</th>
                 <td mat-cell *matCellDef="let element" class="text-align">
 
@@ -47,6 +47,9 @@
             <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
             <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
         </table>
+    </div>
+    <div class="margin-table" *ngIf="newReservas?.length === 0 || newReservas === undefined">
+       <p> No tiene ninguna reserva </p>
     </div>
 
 

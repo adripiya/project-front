@@ -54,9 +54,9 @@ export class CreateReservaComponent {
         state_id: new FormControl(this.data.state_id, Validators.required),
         promoter_id: new FormControl(''),
         restaurant_promoter_id: new FormControl(this.data.restaurant_promoter_id),
-    
+
       });
-    } 
+    }
   }
 
   public buscar(): void {
@@ -85,70 +85,73 @@ export class CreateReservaComponent {
         this.reservasConflictivasVC.push(reserva);
       }
     });
-    if (this.reservasConflictivasVC.length > 0) {
-      this.newRestaurantes = [];
-      this.newPromotorRestaurante = [];
-      this.restaurantesKO = [];
-      this.promotoresService.getPromotorRestaurante().subscribe((response: any) => {
-        this.promotoresRestaurante = response;
-      
-      this.reservasConflictivasVC.forEach((reservaCVCId: any) => {
-        this.promotoresRestaurante.forEach((restaurantePromotor: any) => {
-          if (restaurantePromotor.id === reservaCVCId.restaurant_promoter_id) {
-            this.newPromotorRestaurante.push(restaurantePromotor);
-          }
-        });
-      });
-      this.newPromotorRestaurante.forEach((restaurantePromotor: any) => {
-        this.restaurantes.forEach((restaurante: any) => {
-          if (restaurante.id === restaurantePromotor.restaurant_id) {
-            this.restaurantesKO.push(restaurante);
-          }
-        });
-      });
+    this.promotoresService.getPromotorRestaurante().subscribe((response: any) => {
+      this.promotoresRestaurante = response;
+      if (this.reservasConflictivasVC.length > 0) {
+        this.newRestaurantes = [];
+        this.newPromotorRestaurante = [];
+        this.restaurantesKO = [];
+        this.promotoresService.getPromotorRestaurante().subscribe((response: any) => {
+          this.promotoresRestaurante = response;
 
-        this.restaurantes.forEach((restaurante: any) => {
-          const restauranteSelect =  this.restaurantesKO.filter((rest: any) => rest.id === restaurante.id);
-          if(restauranteSelect.length === 0) {
-            this.newRestaurantes.push(restaurante);
-          }
-        });
+          this.reservasConflictivasVC.forEach((reservaCVCId: any) => {
+            this.promotoresRestaurante.forEach((restaurantePromotor: any) => {
+              if (restaurantePromotor.id === reservaCVCId.restaurant_promoter_id) {
+                this.newPromotorRestaurante.push(restaurantePromotor);
+              }
+            });
+          });
+          this.newPromotorRestaurante.forEach((restaurantePromotor: any) => {
+            this.restaurantes.forEach((restaurante: any) => {
+              if (restaurante.id === restaurantePromotor.restaurant_id) {
+                this.restaurantesKO.push(restaurante);
+              }
+            });
+          });
 
-      this.searched = true;
+          this.restaurantes.forEach((restaurante: any) => {
+            const restauranteSelect = this.restaurantesKO.filter((rest: any) => rest.id === restaurante.id);
+            if (restauranteSelect.length === 0) {
+              this.newRestaurantes.push(restaurante);
+            }
+          });
+
+          this.searched = true;
+        })
+      } else {
+        this.newRestaurantes = this.restaurantes;
+        this.searched = true;
+      }
     })
-    } else {
-      this.newRestaurantes = this.restaurantes;
-      this.searched = true;
     }
-  }
 
   buscarPromotores(): void {
-    this.restauranteSelect = this.restaurantes.find((restaurante: any) =>
-            restaurante.id === this.reservaForm.value.restaurant_id);
-    this.promotores = this.restauranteSelect.promoter;
-  }
+      this.restauranteSelect = this.restaurantes.find((restaurante: any) =>
+        restaurante.id === this.reservaForm.value.restaurant_id);
+      this.promotores = this.restauranteSelect.promoter;
+    }
 
   cerrar() {
-    this.dialogRef.close();
-  }
+      this.dialogRef.close();
+    }
 
   crear() {
-    if (this.reservaForm.valid) {
-      if(this.data) {
+      if(this.reservaForm.valid) {
+      if (this.data) {
         this.dialogRef.close(this.reservaForm);
       } else {
-      const restaurantePromotorSelect = this.promotoresRestaurante.find((restaurantePromotorS: any) =>
-      restaurantePromotorS.restaurant_id === this.reservaForm.value.restaurant_id && restaurantePromotorS.promoter_id === this.reservaForm.value.promoter_id);
+        const restaurantePromotorSelect = this.promotoresRestaurante.find((restaurantePromotorS: any) =>
+          restaurantePromotorS.restaurant_id === this.reservaForm.value.restaurant_id && restaurantePromotorS.promoter_id === this.reservaForm.value.promoter_id);
 
-      this.restaurante = this.restaurantes.find((restaurante: any) =>
-        restaurante.id === this.reservaForm.value.restaurant_id
-      )
-      this.reservaForm.controls['restaurant_promoter_id'].setValue(restaurantePromotorSelect.id);
-      this.reservaForm.controls['restaurant_promoter_id'].updateValueAndValidity();
-      this.reservaForm.controls['totalPrice'].setValue(this.restaurante.pricePerPerson * this.reservaForm.value.totalPeople);
-      this.reservaForm.controls['totalPrice'].updateValueAndValidity();
-      this.dialogRef.close(this.reservaForm);
+        this.restaurante = this.restaurantes.find((restaurante: any) =>
+          restaurante.id === this.reservaForm.value.restaurant_id
+        )
+        this.reservaForm.controls['restaurant_promoter_id'].setValue(restaurantePromotorSelect.id);
+        this.reservaForm.controls['restaurant_promoter_id'].updateValueAndValidity();
+        this.reservaForm.controls['totalPrice'].setValue(this.restaurante.pricePerPerson * this.reservaForm.value.totalPeople);
+        this.reservaForm.controls['totalPrice'].updateValueAndValidity();
+        this.dialogRef.close(this.reservaForm);
+      }
     }
-  }
   }
 }

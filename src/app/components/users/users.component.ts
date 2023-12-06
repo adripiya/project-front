@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DireccionService } from 'src/app/core/providers/direccion/direccion.service';
+import { LoginService } from 'src/app/core/providers/login/login.service';
 import { PeopleService } from 'src/app/core/providers/people/people.service';
 import { PromotoresService } from 'src/app/core/providers/promotores/promotores.service';
 import { RestaurantesService } from 'src/app/core/providers/restaurantes/restaurantes.service';
@@ -24,13 +25,12 @@ export class UsersComponent {
   public direccion_id: any;
   public person_id: any;
   public promotor_id: any;
-
-
+  public newUsuarios: any;
 
   public displayedColumns: string[] = ['id', 'email', 'role', 'created_at', 'updated_at', 'options'];
   public columnsToDisplay: string[] = this.displayedColumns.slice();
 
-  constructor(private usuariosService: UsuariosService, private promotoresService: PromotoresService,private direccionService: DireccionService,
+  constructor(private usuariosService: UsuariosService, protected loginService: LoginService, private direccionService: DireccionService,
     private peopleService: PeopleService,
     public dialog: MatDialog) { }
   
@@ -60,21 +60,21 @@ export class UsersComponent {
           if(send.person_id === null) {
             this.controlCodigoPostal(result, send);
           } else {
-          const newCar: any = {
+          const newUser: any = {
             'email': result.value.email,
             'password': result.value.password,
           }
-          this.usuariosService.putUsuario(newCar, id).subscribe((result: any) => {
+          this.usuariosService.putUsuario(newUser, id).subscribe((result: any) => {
             this.getUsuarios();
           })
         }
         } else {
-          const newCar: any = {
+          const newUser: any = {
             'role': result.value.role,
             'email': result.value.email,
             'password': result.value.password,
           }
-          this.usuariosService.postUsuario(newCar).subscribe((result: any) => {
+          this.usuariosService.postUsuario(newUser).subscribe((result: any) => {
             this.getUsuarios();
           })
         }
@@ -178,8 +178,17 @@ export class UsersComponent {
   public getUsuarios(): void {
     this.usuariosService.getUsuarios().subscribe((result: any) => {
       this.usuarios = result;
-      if(this.minTab && this.usuarios.length > 3) {
-        this.usuarios.length = 3;
+      this.newUsuarios = result;
+      if(this.minTab && this.newUsuarios.length > 3) {
+        this.newUsuarios.length = 3;
+      }
+      if(this.loginService.rol !== 'admin') {
+        this.newUsuarios = [];
+        this.usuarios.forEach((user: any) => {
+          if(user.id === Number(this.loginService.userId)) {
+            this.newUsuarios.push(user);
+          }
+        })
       }
     })
   }

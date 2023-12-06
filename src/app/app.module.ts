@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { MatIconModule } from '@angular/material/icon'
@@ -42,6 +42,7 @@ import { CreateReservaComponent } from './shared/dialogs/create-reserva/create-r
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CreateUsuarioComponent } from './shared/dialogs/create-usuario/create-usuario.component';
 import { DetailUsuarioComponent } from './shared/dialogs/detail-usuario/detail-usuario.component';
+import { AuthInterceptorService } from './auth-interceptorService';
 
 
 
@@ -95,7 +96,13 @@ import { DetailUsuarioComponent } from './shared/dialogs/detail-usuario/detail-u
     MatDatepickerModule,
     MatNativeDateModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, 
+  {
+    provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
