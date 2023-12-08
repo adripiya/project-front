@@ -14,7 +14,7 @@
         <button *ngIf="!data" class="margin-buttons" mat-button (click)="buscar()">Buscar</button>
         <p *ngIf="data">Fecha del evento {{data.initial_date | date : "dd-MM-YYYY" }}</p>
 
-        <mat-form-field  *ngIf="newRestaurantes?.length > 0 && searched && !data">
+        <mat-form-field *ngIf="newRestaurantes?.length > 0 && searched && !data">
             <mat-label>Seleccione un restaurante</mat-label>
             <mat-select formControlName="restaurant_id" (selectionChange)="buscarPromotores()">
                 <mat-option *ngFor="let restaurante of newRestaurantes" [value]="restaurante.id">ID: {{restaurante.id}}
@@ -22,7 +22,6 @@
             </mat-select>
         </mat-form-field>
 
-        <!-- CONTROLAR LA BUSQUEDA DE FECHAS + PROMOTORES DE RESTAURANTE UNA VEZ ESTE HA SIDO SELECCIONADO -->
         <mat-form-field *ngIf="promotores?.length > 0 && searched && !data">
             <mat-label>Seleccione un promotor</mat-label>
             <mat-select formControlName="promoter_id">
@@ -51,8 +50,10 @@
 
         <div *ngIf="searched || data" class="align-end">
             <button class="margin-buttons" mat-button (click)="cerrar()">Cancelar</button>
-            <button *ngIf="!data" class="margin-buttons" mat-raised-button color="primary" (click)="crear()">Crear</button>
-            <button *ngIf="data" class="margin-buttons" mat-raised-button color="primary" (click)="crear()">Guardar</button>
+            <button *ngIf="!data" class="margin-buttons" mat-raised-button color="primary"
+                (click)="crear()">Crear</button>
+            <button *ngIf="data" class="margin-buttons" mat-raised-button color="primary"
+                (click)="crear()">Guardar</button>
 
         </div>
     </form>

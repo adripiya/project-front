@@ -4,7 +4,7 @@
 
     <form [formGroup]="userForm">
 
-      <mat-form-field *ngIf="isCreate && data?.externalUser === false">
+      <mat-form-field *ngIf="isCreate && !data?.externalUser">
         <mat-label>Rol</mat-label>
         <mat-select formControlName="role">
           <mat-option value="admin">Admin</mat-option>

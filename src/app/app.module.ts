@@ -16,7 +16,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { EventsComponent } from './components/events/events.component';
 import { PromotoresComponent } from './components/promotores/promotores.component';
 import { UsersComponent } from './components/users/users.component';
 import { FacturasComponent } from './components/facturas/facturas.component';
@@ -36,13 +35,14 @@ import { CreateRestauranteComponent } from './shared/dialogs/create-restaurante/
 import { CreateRestaurantePromotorComponent } from './shared/dialogs/create-restaurante-promotor/create-restaurante-promotor.component';
 import { DetailRestaurantePromotorComponent } from './shared/dialogs/detail-restaurante-promotor/detail-restaurante-promotor.component';
 import {MatSelectModule} from '@angular/material/select';
-import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { DetailReservaComponent } from './shared/dialogs/detail-reserva/detail-reserva.component';
 import { CreateReservaComponent } from './shared/dialogs/create-reserva/create-reserva.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CreateUsuarioComponent } from './shared/dialogs/create-usuario/create-usuario.component';
 import { DetailUsuarioComponent } from './shared/dialogs/detail-usuario/detail-usuario.component';
 import { AuthInterceptorService } from './auth-interceptorService';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 
@@ -55,7 +55,6 @@ import { AuthInterceptorService } from './auth-interceptorService';
     LoginComponent,
     HeaderComponent,
     CalendarComponent,
-    EventsComponent,
     PromotoresComponent,
     UsersComponent,
     FacturasComponent,
@@ -95,6 +94,9 @@ import { AuthInterceptorService } from './auth-interceptorService';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatSlideToggleModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, 
   {

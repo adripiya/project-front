@@ -43,8 +43,8 @@ export class UsersComponent {
   public addUsuario(id?: any): void {
     let dialogRef!: any;
     if (id) {
-      const send = this.usuarios.find((event: any) =>
-        event.id === id
+      const send = this.usuarios.find((usuario: any) =>
+        usuario.id === id
       )
       dialogRef = this.dialog.open(CreateUsuarioComponent, { data: send });
     } else {
@@ -54,8 +54,8 @@ export class UsersComponent {
       if (result) {
         
         if (id) {
-          const send = this.usuarios.find((event: any) =>
-        event.id === id
+          const send = this.usuarios.find((usuario: any) =>
+        usuario.id === id
       )
           if(send.person_id === null) {
             this.controlCodigoPostal(result, send);
@@ -171,7 +171,6 @@ export class UsersComponent {
     const dialogRef = this.dialog.open(DetailUsuarioComponent, { data: send });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

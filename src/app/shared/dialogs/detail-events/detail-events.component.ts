@@ -6,15 +6,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './detail-events.component.html',
   styleUrls: ['./detail-events.component.scss']
 })
-export class DetailEventsComponent implements OnInit{
+export class DetailEventsComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DetailEventsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  ngOnInit(): void {
-    console.log(this.data)
-  }
 
   cancelar() {
     this.dialogRef.close();

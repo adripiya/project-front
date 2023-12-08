@@ -15,6 +15,18 @@
 
         <p> <mat-hint>Email:</mat-hint> {{ data.user.email }} </p>
 
+        <p *ngIf="reservasDetail && !isAddingDetails"> <mat-hint>Detalles:</mat-hint> {{ reservasDetail.details }}</p>
+
+        <div *ngIf="isAddingDetails">
+            <form>
+                <mat-form-field appearance="fill">
+                    <mat-label>Detalles</mat-label>
+                    <input matInput placeholder="Detalles" [formControl]="details">
+                </mat-form-field>
+            </form>
+        </div>
+        <mat-slide-toggle [(ngModel)]="isAddingDetails">Introducir detalles</mat-slide-toggle>
+        <button mat-raised-button *ngIf="isAddingDetails" (click)="sendDetails()">Añadir detalles</button>
 
     </div>
 

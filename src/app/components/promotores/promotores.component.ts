@@ -159,7 +159,6 @@ export class PromotoresComponent implements OnInit {
     const dialogRef = this.dialog.open(DetailPromotorComponent, { data: send });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

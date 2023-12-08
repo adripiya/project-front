@@ -92,7 +92,6 @@ export class ReservasComponent {
     const dialogRef = this.dialog.open(DetailReservaComponent, { data: send });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Añadir detalle Reserva`);
     });
   }
 

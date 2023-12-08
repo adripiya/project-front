@@ -13,7 +13,6 @@ export class AuthInterceptorService implements HttpInterceptor {
   reload = 0;
   constructor(private router: Router) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // const token: any = localStorage.getItem('token');
     const token: any = 'Bearer ' + sessionStorage.getItem('token');
 
     let request = req;

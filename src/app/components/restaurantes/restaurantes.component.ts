@@ -152,7 +152,6 @@ export class RestaurantesComponent {
     const dialogRef = this.dialog.open(DetailRestauranteComponent, { data: send });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 
