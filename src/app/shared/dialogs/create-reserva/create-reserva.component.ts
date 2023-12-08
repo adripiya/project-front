@@ -60,9 +60,6 @@ export class CreateReservaComponent {
   }
 
   public buscar(): void {
-    // this.usuariosService.getOneUsuarios(1).subscribe((user: any) => {
-    //   this.user = user;
-    // })
     if (this.reservaForm.value.initial_date) {
       this.reservaForm.controls['restaurant_id'].reset();
       this.reservaForm.controls['promoter_id'].reset();

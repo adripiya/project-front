@@ -25,13 +25,6 @@ export class PromotoresService {
   getPromotores(): Observable<any> {
     return this.http.get<any>(this.promotoresUrl);
   }
-  // getLoggedInUser(auth_toke: any): Observable<any> {
-  //   const headers: any = new Headers({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${auth_token}`
-  //   })
-  //   return this.http.get(this.promotoresUrl, { headers: headers })
-  // }
 
   postPromotores(promotor: any): Observable<any> {
     return this.http.post<any>(this.promotoresUrl, promotor);

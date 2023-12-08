@@ -74,7 +74,7 @@ export class ReservasComponent {
             "totalPrice": form.value.totalPrice,
             "totalPeople": form.value.totalPeople,
             "state_id": form.value.state_id ? form.value.state_id : 1,
-            "user_id": this.loginService.userId, // poner id del usuario cuando se haga el login
+            "user_id": this.loginService.userId,
             "restaurant_promoter_id": form.value.restaurant_promoter_id,
           }
           this.reservasService.postReserva(newReserva).subscribe((result: any) => {

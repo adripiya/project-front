@@ -20,7 +20,7 @@ const canActivateContorlRoleUser: CanActivateFn = () => {
 const routes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full'},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'main', component: MainPageComponent, pathMatch: 'full'},
+  { path: 'main', component: MainPageComponent, pathMatch: 'full', canActivate: [canActivateContorlRoleUser, AuthGuard],},
   { path: 'restaurantes', component: RestaurantesComponent, pathMatch: 'full', canActivate: [canActivateContorlRoleUser, AuthGuard] },
   { path: 'promotores', component: PromotoresComponent, pathMatch: 'full', canActivate: [canActivateContorlRoleUser, AuthGuard] },
   { path: 'restaurante-promotor', component: RestaurantePromotorComponent, pathMatch: 'full', canActivate: [canActivateContorlRoleUser, AuthGuard] },
